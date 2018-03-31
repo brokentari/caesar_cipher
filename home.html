@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src = "script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+        <label>
+            <input type="text" onkeydown="additionalKeys(event)" onkeypress="convertToASCII_decrypted(event); convertToASCII_encrypted(event)"
+                    onclick="clearTextBox()" name="to_encrypt" value="enter text" id="encrypt_input">
+        </label>
+        <button onclick="encrypt()" id="encryption">Encrypt</button>
+        <button onclick="decrypt()" id="decryption">Decrypt</button>
+        <p1  id="encrypted"></p1>
+</body>
+</html>
