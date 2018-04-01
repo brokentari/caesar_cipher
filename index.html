@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Cipher</title>
-    <script src = "script.js"></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-        <label>
-            <input type="text" onkeydown="additionalKeys(event)" onkeypress="convertToASCII_decrypted(event); convertToASCII_encrypted(event)"
-                    onclick="clearTextBox()" name="to_encrypt" value="enter text" id="encrypt_input">
-        </label>
-        <button onclick="encrypt()" id="encryption">Encrypt</button>
-        <button onclick="decrypt()" id="decryption">Decrypt</button>
-        <p1  id="encrypted" value="sample">sample</p1>
+    <label>
+        <input id="encrypt_input" value="enter text" type="text" name="to_encrypt">
+    </label>
+    <button id="encryption">encrypt</button>
+    <button id="decryption">decrypt</button>
+    <p1 id="modified_text">sample</p1>
 </body>
 </html>
