@@ -102,6 +102,7 @@ function encrypt() {
     decrypted_ascii.length = 0;
     decrypted_char.length = 0;
     document.getElementById('encrypt_input').value = "";
+    document.getElementById('encrypted').innerHTML = "test";
 }
 
 function decrypt() {
