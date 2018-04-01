@@ -96,7 +96,7 @@ function encrypt() {
     for(let i = 0; i < encrypted_ascii.length; i++) {
         encrypted_char.push(String.fromCharCode(encrypted_ascii[i]));
     }
-    document.getElementById('encrypted').innerHTML = encrypted_char.join("");
+    // document.getElementById('encrypted').innerHTML = encrypted_char.join("");
     encrypted_ascii.length = 0;
     encrypted_char.length = 0;
     decrypted_ascii.length = 0;
@@ -110,10 +110,11 @@ function decrypt() {
     for (let i = 0; i < decrypted_ascii.length; i++) {
         decrypted_char.push(String.fromCharCode(decrypted_ascii[i]));
     }
-    document.getElementById('encrypted').innerHTML = decrypted_char.join("");
+    //document.getElementById('encrypted').innerHTML = decrypted_char.join("");
     encrypted_ascii.length = 0;
     encrypted_char.length = 0;
     decrypted_ascii.length = 0;
     decrypted_char.length = 0;
     document.getElementById('encrypt_input').value = "";
+    document.getElementById('encrypted').innerHTML = "test";
 }
