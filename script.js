@@ -29,27 +29,38 @@ function convertToString() {
     document.getElementById("modified_text").innerHTML = modified_input_text_char.join("");
 }
 
+/*
 function standardProcedure(input_char, modified_input_char) {
     if (input_char < LOWER_LIMIT_CAPITAL || input_char > UPPER_LIMIT_LOWERCASE || (UPPER_LIMIT_CAPITAL < input_char && input_char < LOWER_LIMIT_LOWERCASE)) {
         modified_ascii_array.push(input_char);
+        console.log(input_char + " was added to the array");
     }
 
     else if ((LOWER_LIMIT_CAPITAL <= modified_input_char && modified_input_char <= UPPER_LIMIT_CAPITAL) || (LOWER_LIMIT_LOWERCASE <= modified_input_char && modified_input_char <= UPPER_LIMIT_LOWERCASE)) {
         modified_ascii_array.push(modified_input_char);
+        console.log(modified_input_char + " was added to the array");
     }
 }
+*/
 
 function encrypt() {
-
     convertToASCII();
 
     for (let k = 0; k < ascii_array.length; k++) {
         let input_char = ascii_array[k];
         let modified_input_char = ascii_array[k] - 5;
 
-        standardProcedure(input_char, modified_input_char);
+        if (input_char < LOWER_LIMIT_CAPITAL || input_char > UPPER_LIMIT_LOWERCASE || (UPPER_LIMIT_CAPITAL < input_char && input_char < LOWER_LIMIT_LOWERCASE)) {
+            modified_ascii_array.push(input_char);
+            console.log(input_char + " was added to the array");
+        }
 
-        if ((UPPER_LIMIT_CAPITAL < modified_input_char && modified_input_char < LOWER_LIMIT_LOWERCASE) || (65 <= modified_input_char && modified_input_char <= 69)) {
+        else if ((LOWER_LIMIT_CAPITAL <= modified_input_char && modified_input_char <= UPPER_LIMIT_CAPITAL) || (LOWER_LIMIT_LOWERCASE <= modified_input_char && modified_input_char <= UPPER_LIMIT_LOWERCASE)) {
+            modified_ascii_array.push(modified_input_char);
+            console.log(modified_input_char + " was added to the array");
+        }
+
+        else if ((UPPER_LIMIT_CAPITAL < modified_input_char && modified_input_char < LOWER_LIMIT_LOWERCASE) || (65 <= modified_input_char && modified_input_char <= 69)) {
             let single_char = input_char;
             let count = 0;
             if (modified_input_char < LOWER_LIMIT_LOWERCASE) {
@@ -63,29 +74,33 @@ function encrypt() {
                 while (single_char - 1 >= LOWER_LIMIT_CAPITAL) {
                     single_char = single_char - 1;
                     count = count + 1;
-                    modified_ascii_array.push((UPPER_LIMIT_LOWERCASE + 1) - (5 - count));
+                    
                 }
+                modified_ascii_array.push((UPPER_LIMIT_LOWERCASE + 1) - (5 - count));
             }
         }
     }
-
     convertToString();
-
 }
 
 function decrypt() {
-
     convertToASCII();
 
     for (let k = 0; k < ascii_array.length; k++) {
-
         let input_char = ascii_array[k];
         let modified_input_char = ascii_array[k] + 5;
+        
+        if (input_char < LOWER_LIMIT_CAPITAL || input_char > UPPER_LIMIT_LOWERCASE || (UPPER_LIMIT_CAPITAL < input_char && input_char < LOWER_LIMIT_LOWERCASE)) {
+            modified_ascii_array.push(input_char);
+            console.log(input_char + " was added to the array");
+        }
 
-        standardProcedure(input_char, modified_input_char);
+        else if ((LOWER_LIMIT_CAPITAL <= modified_input_char && modified_input_char <= UPPER_LIMIT_CAPITAL) || (LOWER_LIMIT_LOWERCASE <= modified_input_char && modified_input_char <= UPPER_LIMIT_LOWERCASE)) {
+            modified_ascii_array.push(modified_input_char);
+            console.log(modified_input_char + " was added to the array");
+        }
 
-        if ((UPPER_LIMIT_CAPITAL < modified_input_char && modified_input_char < LOWER_LIMIT_LOWERCASE) || (117 <= modified_input_char && modified_input_char <= 122)) {
-            console.log("third test initialized...");
+        else if ((UPPER_LIMIT_CAPITAL < modified_input_char && modified_input_char < LOWER_LIMIT_LOWERCASE) || (117 <= modified_input_char && modified_input_char <= 122)) {
             let single_char = input_char;
             let count = 0;
             if (modified_input_char > UPPER_LIMIT_CAPITAL) {
@@ -99,20 +114,24 @@ function decrypt() {
                 while (single_char + 1 >= LOWER_LIMIT_CAPITAL) {
                     single_char = single_char - 1;
                     count = count + 1;
+                    
                 }
                 modified_ascii_array.push((LOWER_LIMIT_CAPITAL - 1) + (5 - count));
             }
-
         }
-
     }
-
     convertToString();
-
 }
 
 window.onload = function() {
     document.getElementById("encrypt_input").addEventListener("click", clearInput);
+
+    document.getElementById("encrypt_input").addEventListener("keypress", function (e) {
+        if (e.which === 13) {
+            encrypt();
+            clearInput();
+        }
+    });
 
     document.getElementById("encryption").addEventListener("click", function() {
         encrypt();
